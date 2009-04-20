@@ -49,8 +49,7 @@ public class PointPanel extends JPanel {
 	    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);	    
 
 	    g.setColor(Color.white);
-	    g.fillRect(0, 0, getWidth(), getHeight());	    	   
-	    System.out.println("pointlist size: " + pointList.size());    
+	    g.fillRect(0, 0, getWidth(), getHeight());	    	   	    
 	    for(Point p : pointList) {
 	    
 	    	g2.setColor(Color.RED);

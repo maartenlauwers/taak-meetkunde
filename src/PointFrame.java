@@ -36,26 +36,16 @@ public class PointFrame implements ActionListener {
 		});
 
 	    
-	    pointGenerator = new PointGenerator(10, 640, 400);
+	    pointGenerator = new PointGenerator();
+	    //pointGenerator.sameXPoints(200, 80, 500);
+	    //pointGenerator.sameYPoints(200, 500, 50);
+	    //pointGenerator.NWDiagonal(200, 500, 500);
+	    //pointGenerator.NEDiagonal(200, 500, 500);
+	    //pointGenerator.rectangle(500, 500, 20, 20);	    
 		algoritme1 = new Algoritme1(pointGenerator.getPointList());
 		algoritme2 = new Algoritme2(pointGenerator.getPointList());
 		
 		
-		 // Create the menu bar
-		/*
-	    JMenuBar menuBar = new JMenuBar();
-	    
-	    // Create the menus
-	    // File menu
-	    JMenu file = new JMenu("Bestand");
-	    menuBar.add(file);
-	    JMenuItem logout = new JMenuItem("Logout");
-	    JMenuItem close = new JMenuItem("Sluiten");
-	    logout.addActionListener(this);
-	    close.addActionListener(this);
-	    file.add(logout);
-	    file.add(close);
-	    */
 		
 	    JPanel menuPanel = new JPanel();
 	    
@@ -77,11 +67,11 @@ public class PointFrame implements ActionListener {
 	    	    
 	    frame.getContentPane().add("North", menuPanel);
 	    	   	    	   
-	    pointPanel = new PointPanel(pointGenerator.getPointList(), 640, 400);
+	    pointPanel = new PointPanel(pointGenerator.getPointList(), 800, 540);
         frame.getContentPane().add("Center", pointPanel);               
         
         frame.pack();
-        frame.setSize(new Dimension(640,480));
+        frame.setSize(new Dimension(800,600));
         frame.setVisible(true);
 
 	    
@@ -94,7 +84,7 @@ public class PointFrame implements ActionListener {
 		} 
 		
 		if(e.getSource().equals(btnReset)) {
-			pointGenerator = new PointGenerator(20, pointPanel.getWidth() - 5, pointPanel.getHeight() - 5);
+			pointGenerator = new PointGenerator();
 			algoritme1 = new Algoritme1(pointGenerator.getPointList());			
 			algoritme2 = new Algoritme2(pointGenerator.getPointList());
 			pointPanel.setPointList(pointGenerator.getPointList());
@@ -102,25 +92,15 @@ public class PointFrame implements ActionListener {
 		
 		if(e.getSource().equals(btnAlgoritme1)) {
 			algoritme1.berekenKortstePuntenPaar();		
-			List<Point> list = algoritme1.getKortstePuntenPaar();	
-			System.out.println("List inspection a1");
-			for(Point p : list) {
-				System.out.println("Punt x: " + p.getX() + ", y: " + p.getY());
-			}
+			List<Point> list = algoritme1.getKortstePuntenPaar();				
+
 			pointPanel.showKortstePuntenPaar(list);
 		}
 		
-		if(e.getSource().equals(btnAlgoritme2)) {
-			System.out.println("List inspection a2");
-			System.out.println("Point list size: " + pointPanel.getPointListSize());
+		if(e.getSource().equals(btnAlgoritme2)) {			
 			algoritme2.berekenKortstePuntenPaar();
 			List<Point> list = algoritme2.getKortstePuntenPaar();			
 		
-			
-			for(Point p : list) {
-				System.out.println("Punt x: " + p.getX() + ", y: " + p.getY());
-			}
-			System.out.println("Point list size: " + pointPanel.getPointListSize());
 			pointPanel.showKortstePuntenPaar(list);
 		}
 	}

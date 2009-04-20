@@ -15,6 +15,8 @@ public class Algoritme1 {
 	private Point p1;
 	private Point p2;
 	private double delta; 
+	private long startTime;
+	private long endTime;
 	
 	public Algoritme1(List<Point> points) {
 		this.pointList = points;
@@ -24,8 +26,9 @@ public class Algoritme1 {
 	}
 	
 	public void berekenKortstePuntenPaar() {
-		long startTime = System.currentTimeMillis();
-		System.out.println("Start time: " + startTime);
+
+		startTime = System.currentTimeMillis();
+
 		delta = 1000000;
 		for(int i=0; i<pointList.size(); i++) {
 			for(int j=i+1; j<pointList.size();j++) {
@@ -36,16 +39,18 @@ public class Algoritme1 {
 					p2 = (Point)pointList.get(j);
 				}
 			}
-		}
+		}			
 		
-		
-		
-		long endTime = System.currentTimeMillis();
-		System.out.println("End time: " + endTime);
+		endTime = System.currentTimeMillis();
+	}
+	
+	public long getTimePassed() {
 		long timePassed = endTime - startTime;
-		System.out.println("Time: " + timePassed);
-		
-		System.out.println("Delta: " + delta);
+		return timePassed;
+		//System.out.println("Algoritme 1: Time passed: " + timePassed + " (" + pointList.size() + " points)");
+	}
+	
+	public void printKPP() {
 		System.out.println("Punt 1: " + p1.getX() + ", " + p1.getY());
 		System.out.println("Punt 2: " + p2.getX() + ", " + p2.getY());
 	}

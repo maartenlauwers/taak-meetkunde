@@ -15,6 +15,8 @@ public class Algoritme2 {
 	private Point p1;
 	private Point p2;
 	private double delta; 
+	private long startTime;
+	private long endTime;
 	
 	public Algoritme2(List<Point> points) {
 		this.pointList = points;
@@ -23,9 +25,8 @@ public class Algoritme2 {
 		this.delta = 1000000;
 	}
 	
-	public void berekenKortstePuntenPaar() {
-		long startTime = System.currentTimeMillis();
-		System.out.println("Start time: " + startTime);
+	public void berekenKortstePuntenPaar() {		
+		startTime = System.currentTimeMillis();		
 		
 		// Sorteer de punten naar stijgende X-coördinaat
 		List<Point> sortedPointList = new ArrayList<Point>();
@@ -56,16 +57,20 @@ public class Algoritme2 {
 		}			
 
 		
-		long endTime = System.currentTimeMillis();
-		System.out.println("End time: " + endTime);
-		long timePassed = endTime - startTime;
-		System.out.println("Time: " + timePassed);
-		
-		System.out.println("Delta: " + delta);
-		System.out.println("Punt 1: " + p1.getX() + ", " + p1.getY());
-		System.out.println("Punt 2: " + p2.getX() + ", " + p2.getY());
+		endTime = System.currentTimeMillis();						
 		
 		pointList = sortedPointList;
+	}
+	
+	public long getTimePassed() {
+		long timePassed = endTime - startTime;
+		return timePassed;
+		//System.out.println("Algoritme 2: Time passed: " + timePassed + " (" + pointList.size() + " points)");
+	}
+	
+	public void printKPP() {
+		System.out.println("Punt 1: " + p1.getX() + ", " + p1.getY());
+		System.out.println("Punt 2: " + p2.getX() + ", " + p2.getY());
 	}
 	
 	public List<Point> getKortstePuntenPaar() {

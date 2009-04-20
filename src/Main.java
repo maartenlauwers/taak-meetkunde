@@ -6,7 +6,14 @@ public class Main {
 	 */
 	public static void main(String[] args) {					
 		
-		PointFrame frame = new PointFrame();
+		Tester tester = new Tester();
+		
+		//tester.runRandomPointsTest();
+		//tester.runSameXPointsTest();
+		//tester.runSameYPointsTest();
+		tester.runNEDiagonalPointsTest();
+						
 	}
 
 }
+
